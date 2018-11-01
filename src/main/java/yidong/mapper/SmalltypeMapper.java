@@ -8,4 +8,5 @@ public interface SmalltypeMapper {
     List<Smalltype> selectById(int id);
     int addBig(Smalltype smalltype);
     int deleteById(int id);
+    Smalltype selectByName(String name);
 }

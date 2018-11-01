@@ -18,6 +18,10 @@ public class BigTypeServiceImpl implements BigTypeService {
 
     @Override
     public int addBig(String name) {
+        if(bigtypeMapper.selectByName(name)!=null){
+            return 0;
+        }
+
         return bigtypeMapper.addBig(name);
     }
 

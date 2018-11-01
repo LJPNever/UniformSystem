@@ -8,4 +8,5 @@ public interface BigtypeMapper {
     List<Bigtype> selectBig();
     int addBig(String name);
     int deleteById(int id);
+    Bigtype selectByName(String name);
 }

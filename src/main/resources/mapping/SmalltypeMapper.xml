@@ -12,4 +12,8 @@
   <delete id="deleteById">
     DELETE FROM tb_smalltype where id=#{id}
   </delete>
+
+  <select id="selectByName" resultType="Smalltype">
+    SELECT * FROM  tb_smalltype where name =#{name}
+  </select>
 </mapper>

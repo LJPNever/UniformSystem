@@ -19,6 +19,11 @@ public class SmallTypeServiceImpl implements SmallTypeService {
 
     @Override
     public int addBig(Smalltype smalltype) {
+        if(smalltypeMapper.selectByName(smalltype.getName())!=null)
+        {
+         return 0;
+        }
+
         return smalltypeMapper.addBig(smalltype);
     }
 

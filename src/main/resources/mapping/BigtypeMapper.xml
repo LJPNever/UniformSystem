@@ -12,4 +12,8 @@
   <delete id="deleteById">
     DELETE FROM tb_bigtype where id=#{id}
   </delete>
+
+  <select id="selectByName" resultType="Bigtype">
+    SELECT * FROM  tb_bigtype where name =#{name}
+  </select>
 </mapper>
