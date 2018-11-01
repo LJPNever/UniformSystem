@@ -19,6 +19,7 @@ public class Goods {
     private Integer batch;
 
     private int  smallTypeId;
+    private String smallTypeName;
     private int recommend;
     private List<GoodsPicture>listpicture;
     private List<GoodsPrice> listPrice;
@@ -126,5 +127,13 @@ public class Goods {
 
     public void setListpicture(List<GoodsPicture> listpicture) {
         this.listpicture = listpicture;
+    }
+
+    public String getSmallTypeName() {
+        return smallTypeName;
+    }
+
+    public void setSmallTypeName(String smallTypeName) {
+        this.smallTypeName = smallTypeName;
     }
 }

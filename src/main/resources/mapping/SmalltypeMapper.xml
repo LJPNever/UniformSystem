@@ -16,4 +16,8 @@
   <select id="selectByName" resultType="Smalltype">
     SELECT * FROM  tb_smalltype where name =#{name}
   </select>
+
+  <select id="getName" resultType="String">
+    SELECT name FROM tb_smalltype WHERE  id=#{smallTypeId}
+  </select>
 </mapper>
