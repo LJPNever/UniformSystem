@@ -1,13 +1,14 @@
 package yidong.model;
 
 public class Banner {
-    private String imgaddress;
+    private String imgAddress;
 
-    public String getImgaddress() {
-        return imgaddress;
+
+    public String getImgAddress() {
+        return imgAddress;
     }
 
-    public void setImgaddress(String imgaddress) {
-        this.imgaddress = imgaddress == null ? null : imgaddress.trim();
+    public void setImgAddress(String imgAddress) {
+        this.imgAddress = imgAddress;
     }
 }

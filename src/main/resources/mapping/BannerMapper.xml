@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yidong.mapper.BannerMapper" >
-  <resultMap id="BaseResultMap" type="yidong.model.Banner" >
-    <id column="imgAddress" property="imgaddress" jdbcType="VARCHAR" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from tb_banner
-    where imgAddress = #{imgaddress,jdbcType=VARCHAR}
+  <select id="selectAll" resultType="Banner">
+    SELECT * FROM tb_banner
+  </select>
+  <delete id="delete">
+    DELETE FROM tb_banner where imgAddress=#{imgAddress}
   </delete>
-  <insert id="insert" parameterType="yidong.model.Banner" >
-    insert into tb_banner (imgAddress)
-    values (#{imgaddress,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="yidong.model.Banner" >
-    insert into tb_banner
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="imgaddress != null" >
-        imgAddress,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="imgaddress != null" >
-        #{imgaddress,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+  <insert id="add">
+    INSERT INTO tb_banner VALUES
+    <foreach collection="list" item="item" index="index" separator="," >
+      (
+      #{item.imgAddress}
+
+      )
+    </foreach>
+     </insert>
 </mapper>
