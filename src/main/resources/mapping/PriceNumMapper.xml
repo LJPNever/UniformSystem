@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.PriceNumMapper" >
+  <select id="select" resultType="int">
+    SELECT num FROM tb_price_num where priceId=#{id}
+  </select>
+
+
+  <insert id="addnum">
+    INSERT INTO tb_price_num(priceId,num)VALUES
+    <foreach collection="list" item="item" index="index" separator="," >
+      (
+      #{item.id,jdbcType=INTEGER},#{item.num,jdbcType=INTEGER}
+
+      )
+    </foreach>
+  </insert>
+
+
+  <update id="updateGoodsPrice" parameterType="GoodsPrice">
+    update tb_price_num
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="num =case" suffix="end,">
+        <foreach collection="list" item="item" index="index">
+          when priceId=#{item.id} then #{item.num}
+        </foreach>
+      </trim>
+    </trim>
+
+    where priceId in
+    <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+      #{item.id}
+    </foreach>
+  </update>
+</mapper>

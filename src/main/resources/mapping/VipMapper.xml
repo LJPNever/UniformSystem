@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.VipMapper" >
+  <insert id="setVip" parameterType="yidong.model.Vip">
+    INSERT into tb_vip (openId,integral,goodsId,phone)VALUE (#{openId},#{integral},#{goodsId},#{phone})
+  </insert>
+
+  <select id="selectVip" resultType="yidong.model.Vip">
+    SELECT * FROM tb_vip
+    <where>
+      <if test="phone!=null">
+        phone LIKE '%${phone}%'
+      </if>
+    </where>
+    limit #{start},#{end}
+  </select>
+
+  <update id="updteIntegral">
+    UPDATE tb_vip SET integral=#{integral} where openId=#{openId}
+  </update>
+
+
+  <select id="selectCount" resultType="int">
+    SELECT count(*) FROM tb_vip
+    <where>
+      <if test="phone!=null">
+        phone LIKE '%${phone}%'
+      </if>
+    </where>
+  </select>
+</mapper>

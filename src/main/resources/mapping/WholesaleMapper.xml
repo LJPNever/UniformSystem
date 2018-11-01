@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.WholesaleMapper" >
+  <select id="getDay" resultType="String">
+    select sum(sum) from tb_wholesale where DATE_FORMAT(time,'%Y-%m-%d')= DATE_FORMAT(#{time},'%Y-%m-%d')
+  </select>
+
+  <select id="getWeek" resultType="String">
+    select sum(sum) from tb_wholesale where YEARWEEK(DATE_FORMAT(time,'%Y-%m-%d'))=YEARWEEK(#{time})
+  </select>
+
+  <select id="getMonth" resultType="String">
+    select sum(sum) from tb_wholesale where  DATE_FORMAT(time,'%Y-%m')= DATE_FORMAT(#{time},'%Y-%m')
+  </select>
+
+  <select id="selectWholesale" resultType="Retail">
+    SELECT * FROM tb_wholesale where time BETWEEN #{start} AND #{end}
+    limit #{begin},#{over}
+  </select>
+
+  <select id="selectCount" resultType="int">
+    SELECT COUNT(*) FROM tb_wholesale where time BETWEEN #{start} AND #{end}
+
+  </select>
+</mapper>

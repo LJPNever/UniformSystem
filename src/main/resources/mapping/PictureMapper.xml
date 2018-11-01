@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.PictureMapper" >
+  <resultMap id="BaseResultMap" type="yidong.model.Picture" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="imgAddress" property="imgaddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, imgAddress
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_picture
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_picture
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="yidong.model.Picture" >
+    insert into tb_picture (id, imgAddress)
+    values (#{id,jdbcType=INTEGER}, #{imgaddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="yidong.model.Picture" >
+    insert into tb_picture
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="imgaddress != null" >
+        imgAddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imgaddress != null" >
+        #{imgaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="yidong.model.Picture" >
+    update tb_picture
+    <set >
+      <if test="imgaddress != null" >
+        imgAddress = #{imgaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yidong.model.Picture" >
+    update tb_picture
+    set imgAddress = #{imgaddress,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

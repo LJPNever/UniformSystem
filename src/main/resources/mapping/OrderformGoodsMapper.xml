@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.OrderformGoodsMapper" >
+  <select id="selectByOrderformId" resultType="OrderformGoods" resultMap="OrderformGoods">
+    SELECT * FROM tb_orderform_goods where orderformId=#{id}
+  </select>
+  <resultMap id="OrderformGoods" type="OrderformGoods">
+    <id property="id" column="id"></id>
+    <collection  column="id" property="modelList" select="yidong.mapper.OrderformModelMapper.selectByOrderformId"></collection>
+  </resultMap>
+</mapper>

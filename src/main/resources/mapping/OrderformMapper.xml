@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.OrderformMapper" >
+  <select id="select" resultType="Orderform">
+    SELECT * FROM tb_orderform
+    <where>
+      <if test="state!=-1">
+        state=#{state}
+      </if>
+      <if test="phone!=null">
+       AND phone like '%${phone}%'
+      </if>
+      <if test="name!=null">
+        AND name like '%${name}%'
+      </if>
+      <if test="time!=null">
+        AND DATE_FORMAT(createTime,'%Y-%m-%d')= DATE_FORMAT(#{createTime},'%Y-%m-%d')
+      </if>
+      <if test="id!=null">
+        AND id like '%${id}%'
+      </if>
+    </where>
+    limit #{start},#{end}
+  </select>
+
+  <select id="selectCount" resultType="int">
+    SELECT count(*) FROM tb_orderform where state=#{state}
+  </select>
+  <update id="setState" parameterType="Map">
+    UPDATE tb_orderform SET state=#{state} ,remarksServiceReturn=#{remarksServiceReturn}
+    where id=#{id}
+  </update>
+
+
+  <update id="updateState">
+   UPDATE tb_orderform set state=6
+
+    where id in
+    <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+
+
+  </update>
+
+
+  <select id="selectById" resultType="Orderform" resultMap="Orderform">
+    SELECT * FROM tb_orderform where id=#{id}
+  </select>
+  <resultMap id="Orderform" type="Orderform">
+    <id property="id" column="id"></id>
+    <collection column="id" property="listExpress" select="yidong.mapper.OrderformExpressMapper.selectByOrderformId"></collection>
+    <collection  column="id" property="list" select="yidong.mapper.OrderformGoodsMapper.selectByOrderformId"></collection>
+  </resultMap>
+
+  <select id="getCount" resultType="int">
+    SELECT COUNT(*)FROM tb_orderform
+    <where>
+      <if test="state!=-1">
+        state=#{state}
+      </if>
+      <if test="phone!=null">
+        AND phone like '%${phone}%'
+      </if>
+      <if test="name!=null">
+        AND name like '%${name}%'
+      </if>
+      <if test="time!=null">
+        AND DATE_FORMAT(createTime,'%Y-%m-%d')= DATE_FORMAT(#{createTime},'%Y-%m-%d')
+      </if>
+      <if test="id!=null">
+        AND id like '%${id}%'
+      </if>
+    </where>
+  </select>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.AdminMapper" >
+  <select id="login" resultType="Admin">
+   SELECT * FROM tb_admin where account=#{account}AND password=#{password}
+  </select>
+  <select id="getAdmin" resultType="Admin" parameterType="Map">
+    SELECT * FROM tb_admin
+    <where>
+      <if test="account!=null">
+        account like  '%${account}%'
+      </if>
+    </where>
+    limit #{start},#{end}
+  </select>
+
+  <update id="updateState" parameterType="Map">
+    UPDATE tb_admin set state=#{state} where account=#{account}
+  </update>
+  
+  <insert id="addAdmin" parameterType="Admin">
+    insert into tb_admin (account,password,state) values (#{account},#{password},#{state});
+  </insert>
+
+
+  <select id="getCount"  resultType="int">
+    SELECT COUNT(*) FROM tb_admin
+    <where>
+      <if test="account!=null">
+        account like  '%${account}%'
+      </if>
+    </where>
+
+  </select>
+</mapper>

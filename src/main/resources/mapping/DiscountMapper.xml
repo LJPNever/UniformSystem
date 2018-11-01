@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.DiscountMapper" >
+  <select id="getDiscount"  resultType="Discount">
+    SELECT * FROM tb_discount
+  </select>
+  <update id="updateDiscount" parameterType="Discount">
+    UPDATE tb_discount SET discountCondition=#{discountCondition},reduce=#{reduce},discount=#{discount},start=#{start},end=#{end}
+  </update>
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.UserAddressMapper" >
+  <select id="selectById" resultMap="UserAddress" parameterType="String">
+    SELECT * FROM tb_user_address where userId=#{userId}
+  </select>
+  <resultMap id="UserAddress" type="UserAddress">
+    <id column="addressId" property="addressId"></id>
+    <collection column="addressId" property="addresslist" select="yidong.mapper.AddressMapper.selectById"></collection>
+  </resultMap>
+</mapper>

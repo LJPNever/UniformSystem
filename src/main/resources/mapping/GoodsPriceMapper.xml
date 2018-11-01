@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.GoodsPriceMapper" >
+  <select id="selectByGoodsId" resultType="GoodsPrice" resultMap="selectById">
+    SELECT * FROM tb_goods_price where goodsId=#{id}
+  </select>
+  <resultMap id="selectById" type="GoodsPrice">
+    <id column="id" property="id"></id>
+    <collection column="id" property="num" select="yidong.mapper.PriceNumMapper.select"></collection>
+    <collection column="id" property="listModle" select="yidong.mapper.PriceModelMapper.selectById"></collection>
+  </resultMap>
+
+
+  <select id="selectById"></select>
+
+  <insert id="addPrice" useGeneratedKeys="true" keyProperty="id">
+    INSERT into tb_goods_price(id,goodsId,price,tradePrice) VALUES
+
+    (id,#{goodsId},#{price},#{tradePrice})
+
+  </insert>
+
+
+  <update id="updataPrice">
+    UPDATE tb_goods_price SET price=#{price}
+    WHERE   id IN
+    <foreach collection="listId" item="item" separator="," open="(" close=")" >
+
+      #{item,jdbcType=INTEGER}
+
+
+    </foreach>
+    AND goodsId IN
+    <foreach collection="listGoodsId" item="item" separator="," open="(" close=")" >
+
+      #{item,jdbcType=INTEGER}
+
+
+    </foreach>
+
+  </update>
+
+  <update id="updateGoodsPrice" parameterType="GoodsPrice">
+    update tb_goods_price
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="price =case" suffix="end,">
+        <foreach collection="list" item="item" index="index">
+          when id=#{item.id} then #{item.price}
+        </foreach>
+      </trim>
+
+      <trim prefix="tradePrice =case" suffix="end,">
+        <foreach collection="list" item="item" index="index">
+          when id=#{item.id} then #{item.tradePrice}
+        </foreach>
+      </trim>
+
+
+    </trim>
+
+    where id in
+    <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+      #{item.id}
+    </foreach>
+  </update>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yidong.mapper.ShoppingcarGoodsMapper" >
+  <resultMap id="BaseResultMap" type="yidong.model.ShoppingcarGoods" >
+    <result column="carId" property="carid" jdbcType="INTEGER" />
+    <result column="goodsId" property="goodsid" jdbcType="INTEGER" />
+    <result column="buyNum" property="buynum" jdbcType="INTEGER" />
+    <result column="priceId" property="priceid" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="yidong.model.ShoppingcarGoods" >
+    insert into tb_shoppingcar_goods (carId, goodsId, buyNum, 
+      priceId, state)
+    values (#{carid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, #{buynum,jdbcType=INTEGER}, 
+      #{priceid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="yidong.model.ShoppingcarGoods" >
+    insert into tb_shoppingcar_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        carId,
+      </if>
+      <if test="goodsid != null" >
+        goodsId,
+      </if>
+      <if test="buynum != null" >
+        buyNum,
+      </if>
+      <if test="priceid != null" >
+        priceId,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="buynum != null" >
+        #{buynum,jdbcType=INTEGER},
+      </if>
+      <if test="priceid != null" >
+        #{priceid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
