@@ -32,4 +32,8 @@
     </where>
 
   </select>
+
+  <select id="selectByAccount" resultType="Admin">
+    SELECT  * FROM  tb_admin where account =#{account}
+  </select>
 </mapper>

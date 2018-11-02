@@ -34,6 +34,10 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public int addAdmin(Admin admin) {
+        if(adminMapper.selectByAccount(admin.getAccount())!=null){
+            return 0;
+        }
+
         return adminMapper.addAdmin(admin);
     }
 

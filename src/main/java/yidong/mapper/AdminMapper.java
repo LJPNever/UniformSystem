@@ -11,4 +11,5 @@ public interface AdminMapper {
     int getCount(Map map);
     int updateState(Map map);
     int addAdmin(Admin admin);
+    Admin selectByAccount(String account);
 }
