@@ -60,6 +60,7 @@ public class GoodsPrice {
     private Integer tradePrice;
 
     private Integer num;
+    private String code;
 
     private List<PriceModel> listModle;
 
@@ -77,5 +78,13 @@ public class GoodsPrice {
                 ", num=" + num +
                 ", listModle=" + listModle +
                 '}';
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

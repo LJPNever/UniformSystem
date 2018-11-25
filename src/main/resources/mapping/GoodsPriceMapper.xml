@@ -14,9 +14,9 @@
   <select id="selectById"></select>
 
   <insert id="addPrice" useGeneratedKeys="true" keyProperty="id">
-    INSERT into tb_goods_price(id,goodsId,price,tradePrice) VALUES
+    INSERT into tb_goods_price(id,goodsId,price,tradePrice,code) VALUES
 
-    (id,#{goodsId},#{price},#{tradePrice})
+    (id,#{goodsId},#{price},#{tradePrice},#{code})
 
   </insert>
 
@@ -55,6 +55,11 @@
         </foreach>
       </trim>
 
+      <trim prefix="code =case" suffix="end,">
+        <foreach collection="list" item="item" index="index">
+          when id=#{item.id} then #{item.code}
+        </foreach>
+      </trim>
 
     </trim>
 

@@ -4,9 +4,13 @@
   <insert id="add">
     INSERT into tb_big_model(id,modelName)VALUES (id,#{modelName})
   </insert>
-  <select id="get" resultType="BigModel">
+  <select id="get" resultType="BigModel" resultMap="BigModel">
     SELECT * FROM tb_big_model
   </select>
+  <resultMap id="BigModel" type="BigModel">
+    <id property="id" column="id"></id>
+    <collection column="id" property="smallModels" select="yidong.mapper.SmallModelMapper.get"></collection>
+  </resultMap>
   <delete id="delete">
     DELETE FROM tb_big_model where id=#{id}
   </delete>

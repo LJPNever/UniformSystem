@@ -150,6 +150,7 @@ public class Orderform {
     private List<Express> listExpress;
 
     private List<OrderformGoods> list;
+    private String schoolName;
 
     public List<OrderformGoods> getList() {
         return list;
@@ -173,5 +174,13 @@ public class Orderform {
 
     public void setGiftId(Integer giftId) {
         this.giftId = giftId;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 }
