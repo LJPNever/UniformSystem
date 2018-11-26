@@ -29,7 +29,6 @@
       <if test="schoolName!=null">
       AND schoolName=#{schoolName}
      </if>
-
     </where>
    limit #{begin},#{over}
   </select>

@@ -12,6 +12,7 @@ public class Wholesale {
     private Date time;
 
     private int sum;
+    private String schoolName;
 
     public Integer getGoodsid() {
         return goodsid;
@@ -51,5 +52,13 @@ public class Wholesale {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 }

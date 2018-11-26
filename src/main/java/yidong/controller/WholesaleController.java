@@ -81,11 +81,12 @@ public class WholesaleController {
      */
     @ResponseBody
     @RequestMapping("/selectWholesale")
-    public ResponseEntity<Map>selectWholesale(@RequestParam String start, @RequestParam String end,@RequestParam int page,@RequestParam int limit){
+    public ResponseEntity<Map>selectWholesale(@RequestParam(value = "schoolName",required =false)String schoolName,@RequestParam String start, @RequestParam String end,@RequestParam int page,@RequestParam int limit){
         Map map=new HashMap();
         Map map1=new HashMap();
         map.put("start",start);
         map.put("end",end);
+        map.put("schoolName",schoolName);
         map.put("begin",(page-1)*limit);
         map.put("over",limit);
         map1.put("status",1);

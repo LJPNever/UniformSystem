@@ -14,7 +14,14 @@
   </select>
 
   <select id="selectWholesale" resultType="Retail">
-    SELECT * FROM tb_wholesale where time BETWEEN #{start} AND #{end}
+    SELECT * FROM tb_wholesale
+    <where>
+      time BETWEEN #{start} AND #{end}
+      <if test="schoolName!=null">
+        AND schoolName=#{schoolName}
+      </if>
+    </where>
+
     limit #{begin},#{over}
   </select>
 
