@@ -21,6 +21,7 @@ public class Goods {
     private int  smallTypeId;
     private String smallTypeName;
     private int recommend;
+    private List detailImg;
     private List<GoodsPicture>listpicture;
     private List<GoodsPrice> listPrice;
 
@@ -135,5 +136,13 @@ public class Goods {
 
     public void setSmallTypeName(String smallTypeName) {
         this.smallTypeName = smallTypeName;
+    }
+
+    public List getDetailImg() {
+        return detailImg;
+    }
+
+    public void setDetailImg(List detailImg) {
+        this.detailImg = detailImg;
     }
 }

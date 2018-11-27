@@ -21,7 +21,6 @@
         AND schoolName=#{schoolName}
       </if>
     </where>
-
     limit #{begin},#{over}
   </select>
 

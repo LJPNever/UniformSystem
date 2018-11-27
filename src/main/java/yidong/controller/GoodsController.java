@@ -213,4 +213,20 @@ public class GoodsController {
         }
 
     }
+
+
+    @RequestMapping("/deletePrice")
+    public ResponseEntity<Map>updateGoods(@RequestParam int id){
+        Map map=new HashMap();
+        if(goodsService.deleteById(id)!=0){
+            map.put("status",1);
+            map.put("data",null);
+            return new ResponseEntity<Map>(map,HttpStatus.OK);
+        }else {
+            map.put("status",0);
+            map.put("data",null);
+            return new ResponseEntity<Map>(map,HttpStatus.OK);
+        }
+
+    }
 }

@@ -68,4 +68,8 @@
       #{item.id}
     </foreach>
   </update>
+
+  <delete id="deleteById">
+    DELETE FROM tb_goods_price where id=#{id}
+  </delete>
 </mapper>

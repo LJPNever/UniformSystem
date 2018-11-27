@@ -10,4 +10,5 @@ public interface GoodsPriceMapper {
     int addPrice(GoodsPrice goodsPrice);
     int updataPrice(Batch batch);
     int updateGoodsPrice(List<GoodsPrice> list);
+    int deleteById(int id);
 }

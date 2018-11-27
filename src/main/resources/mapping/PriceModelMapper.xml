@@ -22,4 +22,8 @@
   <select id="selectBySmall" resultType="int">
     SELECT priceId FROM tb_price_model where smallModelId=#{smallModelId}
   </select>
+
+  <delete id="deleteById">
+    DELETE FROM tb_price_model where priceId=#{id}
+  </delete>
 </mapper>

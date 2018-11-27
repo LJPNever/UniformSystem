@@ -12,4 +12,6 @@ public interface PriceModelMapper {
     int addModle(List<PriceModel> list);
 
     List selectBySmall(int smallModelId);
+
+    int deleteById(int id);
 }

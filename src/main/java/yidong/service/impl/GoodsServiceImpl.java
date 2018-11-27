@@ -6,6 +6,7 @@ import yidong.mapper.*;
 import yidong.model.*;
 import yidong.service.GoodsService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -86,6 +87,26 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public int updateGoods(Goods goods) {
+        int a=goods.getId();
+        List<GoodsPrice> list=new ArrayList<>();
+        for (int i = 0; i < goods.getListPrice().size(); i++) {
+            if (goods.getListPrice().get(i).getGoodsId()==null) {
+                goods.getListPrice().get(i).setGoodsId(a);
+                if (goodsPriceMapper.addPrice(goods.getListPrice().get(i)) == 1) {
+                    for (int j = 0; j < goods.getListPrice().get(i).getListModle().size(); j++) {
+                        int b = goods.getListPrice().get(i).getId();
+                        goods.getListPrice().get(i).getListModle().get(j).setPriceId(b);
+                    }
+                    priceModelMapper.addModle(goods.getListPrice().get(i).getListModle());
+                    list.add(goods.getListPrice().get(i));
+                }
+
+
+                priceNumMapper.addnum(list);
+            }
+
+        }
+
         return  goodsMapper.updateById(goods)+goodsPriceMapper.updateGoodsPrice(goods.getListPrice())+priceNumMapper.updateGoodsPrice(goods.getListPrice());
 
     }
@@ -93,6 +114,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int selectCount(Map map) {
         return goodsMapper.selectCount(map);
+    }
+
+    @Override
+    public int deleteById(int id) {
+        return goodsPriceMapper.deleteById(id)+priceModelMapper.deleteById(id)+priceNumMapper.deleteById(id);
     }
 
 

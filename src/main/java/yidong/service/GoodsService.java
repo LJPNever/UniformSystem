@@ -18,4 +18,5 @@ public interface GoodsService {
     int updateBatch(int smallTypeId,int smallModelId,int price);
     int updateGoods(Goods goods);
     int selectCount(Map map);
+    int deleteById(int id);
 }

@@ -152,6 +152,7 @@ public class Orderform {
     private List<OrderformGoods> list;
     private String schoolName;
 
+
     public List<OrderformGoods> getList() {
         return list;
     }
@@ -183,4 +184,5 @@ public class Orderform {
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
     }
+
 }
