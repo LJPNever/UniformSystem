@@ -26,6 +26,7 @@
   <select id="selectById" resultMap="Goods" resultType="Goods">
     SELECT * FROM tb_goods where id=#{id}
   </select>
+
   <resultMap id="Goods" type="Goods">
     <id column="id" property="id"></id>
     <id column="smallTypeId" property="smallTypeId"></id>

@@ -31,7 +31,8 @@ public class OrderFormController {
     public ResponseEntity<Map> selectByState(@RequestParam (value = "state",required = false)int state,
                                         @RequestParam (value = "phone",required = false)String phone,
                                         @RequestParam (value = "name",required = false)String name,
-                                        @RequestParam (value = "time",required = false)String time,
+                                        @RequestParam (value = "startTime",required = false)String startTime,
+                                        @RequestParam (value = "endTime",required = false)String endTime,
                                         @RequestParam (value = "id",required = false)String id,
                                         @RequestParam int page,@RequestParam int limit)
     {
@@ -40,14 +41,15 @@ public class OrderFormController {
         map.put("state",state);
         map.put("phone",phone);
         map.put("name",name);
-        map.put("time",time);
+        map.put("endTime",endTime);
+        map.put("startTime",startTime);
         map.put("id",id);
         map.put("start",(page-1)*limit);
         map.put("end",limit);
         map1.put("status",1);
         map1.put("data",orderFormService.select(map));
         map1.put("total",orderFormService.getCount(map));
-        return new ResponseEntity<Map>(map, HttpStatus.OK);
+        return new ResponseEntity<Map>(map1, HttpStatus.OK);
     }
 
     /**
