@@ -9,9 +9,11 @@
     <foreach collection="list" item="item" index="index" separator="," >
     (
     id,#{item.goodsId,jdbcType=INTEGER},#{item.imgAddress}
-
     )
   </foreach>
-
   </insert>
+
+  <delete id="deleteById">
+    DELETE FROM tb_goods_picture where id=#{id}
+  </delete>
 </mapper>

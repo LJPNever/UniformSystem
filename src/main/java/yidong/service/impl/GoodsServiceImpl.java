@@ -121,5 +121,10 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsPriceMapper.deleteById(id)+priceModelMapper.deleteById(id)+priceNumMapper.deleteById(id);
     }
 
+    @Override
+    public int deletePicture(int id) {
+        return goodsPictureMapper.deleteById(id);
+    }
+
 
 }

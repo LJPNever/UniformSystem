@@ -65,8 +65,8 @@
       <if test="name!=null">
         AND name like '%${name}%'
       </if>
-      <if test="time!=null">
-        AND DATE_FORMAT(createTime,'%Y-%m-%d')= DATE_FORMAT(#{createTime},'%Y-%m-%d')
+      <if test="startTime!=null">
+        AND createTime BETWEEN DATE_FORMAT(#{startTime},'%Y-%m-%d') AND DATE_FORMAT(#{endTime},'%Y-%m-%d')
       </if>
       <if test="id!=null">
         AND id like '%${id}%'

@@ -19,4 +19,5 @@ public interface GoodsService {
     int updateGoods(Goods goods);
     int selectCount(Map map);
     int deleteById(int id);
+    int deletePicture(int id);
 }

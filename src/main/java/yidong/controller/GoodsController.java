@@ -3,10 +3,7 @@ package yidong.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import yidong.Util.IsEmpty;
 import yidong.Util.UUIDUtils;
@@ -17,6 +14,7 @@ import yidong.service.GoodsService;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -228,5 +226,20 @@ public class GoodsController {
             return new ResponseEntity<Map>(map,HttpStatus.OK);
         }
 
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete/{id}",method =RequestMethod.DELETE)
+    public ResponseEntity<Map>delete(@PathVariable() Integer id){
+         Map map=new HashMap();
+        if(goodsService.deletePicture(id)!=0){
+            map.put("status",1);
+            map.put("data",null);
+            return new ResponseEntity<Map>(map,HttpStatus.OK);
+        }else {
+            map.put("status",0);
+            map.put("data",null);
+            return new ResponseEntity<Map>(map,HttpStatus.OK);
+        }
     }
 }

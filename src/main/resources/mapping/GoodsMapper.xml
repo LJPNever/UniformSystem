@@ -5,7 +5,7 @@
     SELECT name FROM  tb_goods where id=#{gift}
   </select>
 
-  <select id="selectGoods" resultType="Goods" resultMap="Goods">
+  <select id="selectGoods" resultMap="Goods">
     SELECT * FROM tb_goods
     <where >
       <if test="state!=0">
@@ -23,7 +23,7 @@
     limit #{start},#{end}
   </select>
 
-  <select id="selectById" resultMap="Goods" resultType="Goods">
+  <select id="selectById" resultMap="Goods" >
     SELECT * FROM tb_goods where id=#{id}
   </select>
 
