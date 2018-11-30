@@ -13,4 +13,5 @@ public interface OrderformMapper {
    int updateState(List<Modle> list);
    Orderform selectById(String id);
    int getCount(Map map);
+   int change(String id);
 }

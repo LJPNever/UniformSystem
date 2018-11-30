@@ -6,7 +6,14 @@
     SELECT * FROM tb_express where orderform_id=#{id}
   </select>
   <insert id="addExpress" parameterType="Express">
-    INSERT INTO tb_express(delivery,expressNumber,expressCompany,orderform_id,goods_name,goods_modle,goods_num,goods_price)VALUE
-    (#{delivery},#{expressNumber},#{expressCompany},#{orderform_id},#{goods_name},#{goods_modle},#{goods_num},#{goods_price})
+    INSERT INTO tb_express(delivery,expressNumber,expressCompany,orderformId,goodsName,code,goodsNum,goodsPrice)VALUE
+
+    <foreach collection="list" item="item" index="index" separator="," >
+      (
+      #{delivery.delivery},#{delivery.expressNumber},#{delivery.expressCompany},#{orderformId},#{item.goodsName},#{item.code},
+      #{item.goodsNum,jdbcType=INTEGER},#{item.goodsPrice,jdbcType=INTEGER}
+      )
+    </foreach>
+
   </insert>
 </mapper>

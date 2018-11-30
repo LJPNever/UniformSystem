@@ -2,6 +2,7 @@ package yidong.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import yidong.mapper.OrderformGoodsMapper;
 import yidong.mapper.OrderformMapper;
 import yidong.model.Modle;
 import yidong.model.Orderform;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class OrderFormServiceImpl implements OrderFormService {
    @Autowired
     private OrderformMapper orderformMapper;
+   @Autowired
+   private OrderformGoodsMapper orderformGoodsMapper;
 
     @Override
     public List<Orderform> select(Map map) {
@@ -37,7 +40,7 @@ public class OrderFormServiceImpl implements OrderFormService {
             a=list.get(i).getId();
             orderformMapper.updateState(a);
         }*/
-        return orderformMapper.updateState(list);
+        return orderformMapper.updateState(list)+orderformGoodsMapper.changeState(list);
     }
 
     @Override

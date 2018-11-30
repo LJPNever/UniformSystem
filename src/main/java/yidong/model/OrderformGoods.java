@@ -12,9 +12,9 @@ public class OrderformGoods {
     private String goodsName;
 
     private Integer goodsPrice;
-
+    private String goodsPicture;
     private Integer buyNum;
-
+    private String code;
     private Integer state;
     private  int priceId;
 
@@ -91,4 +91,22 @@ public class OrderformGoods {
     public void setPriceId(int priceId) {
         this.priceId = priceId;
     }
+
+    public String getGoodsPicture() {
+        return goodsPicture;
+    }
+
+    public void setGoodsPicture(String goodsPicture) {
+        this.goodsPicture = goodsPicture;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+
 }

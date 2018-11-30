@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yidong.mapper.OrderformMapper" >
-  <select id="select" resultType="Orderform">
+  <select id="select" resultMap="Orderform">
     SELECT * FROM tb_orderform
     <where>
       <if test="state!=-1">
@@ -49,6 +49,7 @@
   </select>
   <resultMap id="Orderform" type="Orderform">
     <id property="id" column="id"></id>
+
     <collection column="id" property="listExpress" select="yidong.mapper.OrderformExpressMapper.selectByOrderformId"></collection>
     <collection  column="id" property="list" select="yidong.mapper.OrderformGoodsMapper.selectByOrderformId"></collection>
   </resultMap>
@@ -74,4 +75,7 @@
     </where>
   </select>
 
+  <update id="change">
+     UPDATE tb_orderform set state=6 where id=#{id}
+  </update>
 </mapper>
