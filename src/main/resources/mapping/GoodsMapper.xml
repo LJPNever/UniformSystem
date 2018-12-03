@@ -36,14 +36,14 @@
   </resultMap>
 
   <insert id="addGoods" parameterType="Goods" useGeneratedKeys="true" keyProperty="id" >
-    INSERT INTO tb_goods(id,name,integral,createTime,detail,state,batch,smallTypeId)VALUE
-    (id,#{name},#{integral},#{createTime},#{detail},#{state},#{batch},#{smallTypeId})
+    INSERT INTO tb_goods(id,name,integral,createTime,detail,state,batch,smallTypeId,recommend)VALUE
+    (id,#{name},#{integral},#{createTime},#{detail},#{state},#{batch},#{smallTypeId},#{recommend})
 
 
   </insert>
 
   <update id="updateState">
-    UPDATE tb_goods set state=3
+    UPDATE tb_goods set state=#{state}
 
     where id in
     <foreach collection="list" index="index" item="item" separator="," open="(" close=")">

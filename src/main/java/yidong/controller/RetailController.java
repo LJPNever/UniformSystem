@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import yidong.Util.IsEmpty;
 import yidong.model.Retail;
 import yidong.service.RetailService;
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Retail")
+@RequestMapping("/api/Retail")
 public class RetailController {
     @Autowired
     private RetailService retailService;
@@ -87,7 +88,7 @@ public class RetailController {
         Map map1=new HashMap();
         map.put("start",start);
         map.put("end",end);
-        map.put("schoolName",schoolName);
+        map.put("schoolName", IsEmpty.isEmpty(schoolName));
         map.put("begin",(page-1)*limit);
         map.put("over",limit);
         map1.put("status",1);

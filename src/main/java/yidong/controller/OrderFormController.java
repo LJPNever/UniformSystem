@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/OrderForm")
+@RequestMapping("/api/OrderForm")
 public class OrderFormController {
     @Autowired
     private OrderFormService orderFormService;

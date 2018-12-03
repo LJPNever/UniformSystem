@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Free")
+@RequestMapping("/api/Free")
 public class FreeshippingController {
     @Autowired
     private FreeshippingService freeshippingService;

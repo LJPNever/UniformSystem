@@ -10,6 +10,8 @@ import yidong.Util.UUIDUtils;
 import yidong.model.Goods;
 import yidong.model.GoodsModel;
 import yidong.model.Modle;
+import yidong.model.StateModel;
+
 import yidong.service.GoodsService;
 
 import java.io.FileInputStream;
@@ -22,7 +24,7 @@ import java.util.Map;
 import static yidong.Util.Qiniu.uploadQNImg;
 
 @RestController
-@RequestMapping("/Goods")
+@RequestMapping("/api/Goods")
 public class GoodsController {
     @Autowired
     private GoodsService goodsService;
@@ -114,9 +116,9 @@ public class GoodsController {
      * @return
      */
     @RequestMapping("/updata")
-    public ResponseEntity<Map> updata(@RequestBody List<Modle> list){
+    public ResponseEntity<Map> updata(@RequestBody StateModel stateModel){
         Map map=new HashMap();
-        if(goodsService.updateState(list)!=0){
+        if(goodsService.updateState(stateModel)!=0){
             map.put("status",1);
             map.put("data",null);
             return new ResponseEntity<Map>(map,HttpStatus.OK);

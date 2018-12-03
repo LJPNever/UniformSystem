@@ -3,7 +3,7 @@
 <mapper namespace="yidong.mapper.OrderformExpressMapper" >
 
   <select id="selectByOrderformId" resultType="Express">
-    SELECT * FROM tb_express where orderform_id=#{id}
+    SELECT * FROM tb_express where orderformId=#{id}
   </select>
   <insert id="addExpress" parameterType="Express">
     INSERT INTO tb_express(delivery,expressNumber,expressCompany,orderformId,goodsName,code,goodsNum,goodsPrice)VALUE

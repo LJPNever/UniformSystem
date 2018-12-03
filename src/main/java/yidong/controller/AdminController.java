@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Admin")
+@RequestMapping("/api/Admin")
 public class AdminController {
 
     @Autowired

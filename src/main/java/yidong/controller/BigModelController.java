@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/BigModel")
+@RequestMapping("/api/BigModel")
 public class BigModelController {
     @Autowired
     private BigModelService bigModelService;

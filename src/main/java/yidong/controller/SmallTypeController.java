@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/SmallType")
+@RequestMapping("/api/SmallType")
 public class SmallTypeController {
     @Autowired
     private SmallTypeService smallTypeService;

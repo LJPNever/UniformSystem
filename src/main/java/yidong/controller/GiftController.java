@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/Gift")
+@RequestMapping("/api/Gift")
 @Controller
 public class GiftController {
    @Autowired

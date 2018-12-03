@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Vip")
+@RequestMapping("/api/Vip")
 public class VipController {
     @Autowired
     private VipService vipService;

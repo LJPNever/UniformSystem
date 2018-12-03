@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Wholesale")
+@RequestMapping("/api/Wholesale")
 public class WholesaleController {
     @Autowired
     private WholesaleService wholesaleService;

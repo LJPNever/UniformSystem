@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/Banner")
+@RequestMapping("/api/Banner")
 public class BannerController {
     @Autowired
     private BannerService bannerService;

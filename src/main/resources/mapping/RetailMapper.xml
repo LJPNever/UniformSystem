@@ -25,7 +25,7 @@
   <select id="selectRetail" resultType="Retail">
     SELECT * FROM tb_retail
      <where>
-       time BETWEEN #{start} AND #{end}
+       time BETWEEN DATE_FORMAT(#{start},'%Y-%m-%d') AND DATE_FORMAT(#{end},'%Y-%m-%d')
       <if test="schoolName!=null">
       AND schoolName=#{schoolName}
      </if>
@@ -34,7 +34,7 @@
   </select>
 
   <select id="selectCount" resultType="int">
-    SELECT COUNT(*) FROM tb_retail where time BETWEEN #{start} AND #{end}
+    SELECT COUNT(*) FROM tb_retail where time BETWEEN DATE_FORMAT(#{start},'%Y-%m-%d') AND DATE_FORMAT(#{end},'%Y-%m-%d')
 
   </select>
 </mapper>

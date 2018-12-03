@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/UserAddress")
+@RequestMapping("/api/UserAddress")
 public class UserAddressController {
    @Autowired
     private UserAddressService userAddressService;

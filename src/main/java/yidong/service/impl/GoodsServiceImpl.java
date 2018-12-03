@@ -61,8 +61,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public int updateState(List<Modle> list) {
-        return goodsMapper.updateState(list);
+    public int updateState(StateModel stateModel) {
+        return goodsMapper.updateState(stateModel);
     }
 
     @Override

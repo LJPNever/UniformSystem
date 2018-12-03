@@ -13,7 +13,7 @@ import javax.crypto.Mac;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/School")
+@RequestMapping("/api/School")
 @RestController
 public class SchoolController {
     @Autowired

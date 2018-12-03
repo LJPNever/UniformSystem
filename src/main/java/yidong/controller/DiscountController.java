@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Discount")
+@RequestMapping("/api/Discount")
 public class DiscountController {
     @Autowired
     private DiscountService discountService;

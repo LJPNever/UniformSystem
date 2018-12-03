@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/BigType")
+@RequestMapping("/api/BigType")
 public class BigTypeController {
     @Autowired
     private BigTypeService bigTypeService;
