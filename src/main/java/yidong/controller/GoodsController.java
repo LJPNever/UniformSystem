@@ -42,12 +42,14 @@ public class GoodsController {
     public ResponseEntity<Map> selectGoods(@RequestParam(value = "state",required = false)int state,
                                             @RequestParam(value = "createTime",required = false)int createTime,
                                            @RequestParam(value = "smallTypeId",required = false)int smallTypeId,
+                                           @RequestParam(value = "bigTypeId",required = false)int bigTypeId,
                                            @RequestParam int page,@RequestParam int limit){
         Map map=new HashMap();
         Map map1=new HashMap();
         map.put("state",state);
         map.put("createTime",createTime);
         map.put("smallTypeId",smallTypeId);
+        map.put("bigTypeId",bigTypeId);
         map.put("start",(page-1)*limit);
         map.put("end",limit);
         map1.put("status",1);

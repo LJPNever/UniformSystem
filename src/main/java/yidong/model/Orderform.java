@@ -150,6 +150,7 @@ public class Orderform {
     private List<Express> listExpress;
 
     private List<OrderformGoods> list;
+    private int isVip;
     private String schoolName;
 
 
@@ -186,4 +187,11 @@ public class Orderform {
     }
 
 
+    public int getIsVip() {
+        return isVip;
+    }
+
+    public void setIsVip(int isVip) {
+        this.isVip = isVip;
+    }
 }

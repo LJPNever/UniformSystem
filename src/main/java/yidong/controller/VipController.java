@@ -1,13 +1,11 @@
 package yidong.controller;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import yidong.Util.IsEmpty;
 import yidong.model.Vip;
 import yidong.service.VipService;
@@ -25,21 +23,28 @@ public class VipController {
     /*
     设置VIP，成功返回1；如果该用户已经是vip，则会返回错误代码 500
      */
-    @ResponseBody
+
     @RequestMapping("/setVip")
     public ResponseEntity<Map> setVip(@RequestBody Vip vip){
 
         Map map=new HashMap();
-        map.put("status",1);
-        map.put("data",vipService.setVip(vip));
-        return new ResponseEntity<Map>(map, HttpStatus.OK);
+        if(vipService.setVip(vip)!=0) {
+            map.put("status", 1);
+            map.put("data", "添加成功");
+            return new ResponseEntity<Map>(map, HttpStatus.OK);
+        }else {
+            map.put("status",0);
+            map.put("data", "添加失败");
+            return new ResponseEntity<Map>(map, HttpStatus.OK);
+        }
+
     }
 
 
     /*
     查询所有的会员信息
      */
-    @ResponseBody
+
     @RequestMapping("/selectVip")
     public ResponseEntity<Map> selectVip(@RequestParam (value = "phone",required = false)String phone,
                                          @RequestParam int page,@RequestParam int limit){
@@ -61,7 +66,7 @@ public class VipController {
      * @param openId
      * @return
      */
-    @ResponseBody
+
     @RequestMapping("/updteIntegral")
     public ResponseEntity<Map> updteIntegral(@RequestParam float integral,@RequestParam String openId){
         Map map1=new HashMap();
@@ -79,6 +84,22 @@ public class VipController {
             map1.put("status",0);
             map1.put("data",null);
             return new ResponseEntity<Map>(map1,HttpStatus.OK);
+        }
+    }
+
+    @RequestMapping(value = "/delete/{openId}",method = RequestMethod.DELETE)
+    public ResponseEntity<Map> delete(@PathVariable() String openId){
+        Map map=new HashMap();
+
+        if(vipService.deleteById(openId)!=0){
+              map.put("status",1);
+              map.put("data","删除成功");
+              return new ResponseEntity<Map>(map,HttpStatus.OK);
+        }
+        else {
+            map.put("status",0);
+            map.put("data","删除失败");
+            return new ResponseEntity<Map>(map,HttpStatus.OK);
         }
     }
 }

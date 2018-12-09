@@ -10,4 +10,6 @@ public interface VipService {
     List<Vip> selectVip(Map map);
     int updteIntegral(Map map);
     int selectCount(Map map);
+    int deleteById(String openId);
+
 }

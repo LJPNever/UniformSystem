@@ -13,12 +13,21 @@ public class SchoolServiceImpl implements SchoolService {
     @Autowired
     private SchoolMapper schoolMapper;
     @Override
-    public List<School> selectAll() {
-        return schoolMapper.selectAll();
+    public List<School> selectAll(int smallTypeId) {
+        return schoolMapper.selectAll(smallTypeId);
     }
 
     @Override
     public int addSchoolName(School school) {
+
+        if(schoolMapper.check(school)!=null){
+            return 0;
+        }
         return schoolMapper.addSchoolName(school);
+    }
+
+    @Override
+    public int delete(String schoolName) {
+        return schoolMapper.delete(schoolName);
     }
 }

@@ -12,6 +12,11 @@ import yidong.Util.IsEmpty;
 import yidong.model.Admin;
 import yidong.service.AdminService;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +33,7 @@ public class AdminController {
      **/
     @ResponseBody
     @RequestMapping("/login")
-    public ResponseEntity<Map> login(@RequestParam String account,@RequestParam String password){
+    public ResponseEntity<Map> login(HttpServletResponse response, @RequestParam String account, @RequestParam String password){
         Map map1=new HashMap();
         Map<Object,Object>map=new HashMap<>();
         map.put("account",account);
@@ -37,6 +42,10 @@ public class AdminController {
         if(a!=0){
             map1.put("status",1);
             map1.put("data",a);
+            Cookie cookie = new Cookie("state", String.valueOf(a));//设置cookie的key和value值
+            cookie.setMaxAge(-1);   //过期时间,关闭浏览器失效
+            cookie.setPath("/");
+            response.addCookie(cookie); //添加cookie
             return new ResponseEntity<Map>(map1,HttpStatus.OK);
         }
         else {
@@ -107,4 +116,7 @@ public class AdminController {
             map.put("data","wsnd");
             return new ResponseEntity<Map>(map,HttpStatus.OK);}
     }
+
+
+
 }

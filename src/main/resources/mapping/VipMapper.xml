@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yidong.mapper.VipMapper" >
   <insert id="setVip" parameterType="yidong.model.Vip">
-    INSERT into tb_vip (openId,integral,goodsId,phone)VALUE (#{openId},#{integral},#{goodsId},#{phone})
+    INSERT into tb_vip (openId,integral,schoolName,phone)VALUE (#{openId},#{integral},#{schoolName},#{phone})
   </insert>
 
   <select id="selectVip" resultType="yidong.model.Vip">
@@ -27,5 +27,13 @@
         phone LIKE '%${phone}%'
       </if>
     </where>
+  </select>
+
+  <delete id="deleteById">
+    DELETE FROM tb_vip where openId=#{openId}
+</delete>
+
+  <select id="check" resultType="yidong.model.Vip">
+    SELECT * FROM tb_vip where openId=#{openId}
   </select>
 </mapper>

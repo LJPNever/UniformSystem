@@ -24,6 +24,7 @@ public class Goods {
     private List detailImg;
     private List<GoodsPicture>listpicture;
     private List<GoodsPrice> listPrice;
+    private int bigTypeId;
 
     public Integer getId() {
         return id;
@@ -144,5 +145,13 @@ public class Goods {
 
     public void setDetailImg(List detailImg) {
         this.detailImg = detailImg;
+    }
+
+    public int getBigTypeId() {
+        return bigTypeId;
+    }
+
+    public void setBigTypeId(int bigTypeId) {
+        this.bigTypeId = bigTypeId;
     }
 }

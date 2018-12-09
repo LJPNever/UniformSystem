@@ -14,6 +14,9 @@
       <if test="smallTypeId!=0">
         AND smallTypeId=#{smallTypeId}
       </if>
+      <if test="bigTypeId!=0">
+        AND bigTypeId=#{bigTypeId}
+      </if>
     </where>
     <if test="createTime!=0">
       ORDER BY  createTime DESC
@@ -36,8 +39,8 @@
   </resultMap>
 
   <insert id="addGoods" parameterType="Goods" useGeneratedKeys="true" keyProperty="id" >
-    INSERT INTO tb_goods(id,name,integral,createTime,detail,state,batch,smallTypeId,recommend)VALUE
-    (id,#{name},#{integral},#{createTime},#{detail},#{state},#{batch},#{smallTypeId},#{recommend})
+    INSERT INTO tb_goods(id,name,integral,createTime,detail,state,batch,smallTypeId,recommend,bigTypeId)VALUE
+    (id,#{name},#{integral},#{createTime},#{detail},#{state},#{batch},#{smallTypeId},#{recommend},#{bigTypeId})
 
 
   </insert>
@@ -78,7 +81,7 @@
 
   <update id="updateById">
     UPDATE tb_goods set name=#{name},integral=#{integral},detail=#{detail},state=#{state},
-    batch=#{batch},smallTypeId=#{smallTypeId},recommend=#{recommend} where id=#{id}
+    batch=#{batch},smallTypeId=#{smallTypeId},recommend=#{recommend},bigTypeId=#{bigTypeId} where id=#{id}
   </update>
 
 
@@ -90,6 +93,9 @@
       </if>
       <if test="smallTypeId!=0">
         AND smallTypeId=#{smallTypeId}
+      </if>
+      <if test="bigTypeId!=0">
+        AND bigTypeId=#{bigTypeId}
       </if>
     </where>
 

@@ -5,7 +5,7 @@ public class Vip {
 
     private Float integral;
 
-    private Integer goodsId;
+    private String  schoolName;
     private String phone;
 
     public String getOpenId() {
@@ -26,13 +26,7 @@ public class Vip {
         this.openId = openId;
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
-    }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
-    }
 
     public String getPhone() {
         return phone;
@@ -40,5 +34,13 @@ public class Vip {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 }

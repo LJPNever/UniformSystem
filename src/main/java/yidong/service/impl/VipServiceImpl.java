@@ -16,6 +16,11 @@ public class VipServiceImpl implements VipService {
     private VipMapper vipMapper;
     @Override
     public int setVip(Vip vip) {
+
+        if(vipMapper.check(vip.getOpenId())!=null){
+            return 0;
+        }
+
         return vipMapper.setVip(vip);
     }
 
@@ -33,4 +38,11 @@ public class VipServiceImpl implements VipService {
     public int selectCount(Map map) {
         return vipMapper.selectCount(map);
     }
+
+    @Override
+    public int deleteById(String openId) {
+        return vipMapper.deleteById(openId);
+    }
+
+
 }
