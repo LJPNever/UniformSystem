@@ -11,11 +11,19 @@ public class DiscountServiceImpl implements DiscountService {
     private DiscountMapper discountMapper;
     @Override
     public Discount getDiscount() {
-        return discountMapper.getDiscount();
+        Discount discount=discountMapper.getDiscount();
+        discount.setDiscount(discount.getDiscount()/10);
+        discount.setDiscountCondition(discount.getDiscountCondition()/100);
+        discount.setReduce(discount.getReduce()/100);
+        return discount;
     }
 
     @Override
     public int updateDiscount(Discount discount) {
+        discount.setDiscount(discount.getDiscount()*10);
+        discount.setDiscountCondition(discount.getDiscountCondition()*100);
+        discount.setReduce(discount.getReduce()*100);
+
         return discountMapper.updateDiscount(discount);
     }
 }

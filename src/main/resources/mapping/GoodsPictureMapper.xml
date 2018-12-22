@@ -16,4 +16,8 @@
   <delete id="deleteById">
     DELETE FROM tb_goods_picture where id=#{id}
   </delete>
+
+  <update id="updateById" parameterType="GoodsPicture">
+    UPDATE tb_goods_picture set imgAddress=#{imgAddress} where id=#{id}
+  </update>
 </mapper>

@@ -2,6 +2,7 @@ package yidong.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import yidong.Util.Transform;
 import yidong.mapper.*;
 import yidong.model.*;
 import yidong.service.GoodsService;
@@ -24,16 +25,24 @@ public class GoodsServiceImpl implements GoodsService {
     private PriceNumMapper priceNumMapper;
     @Override
     public List<Goods> selectGoods(Map map) {
-        return goodsMapper.selectGoods(map);
+        List<Goods> list=goodsMapper.selectGoods(map);
+        for(int i=0;i<list.size();i++){
+            Transform.transform(list.get(i).getListPrice());
+        }
+        return list;
     }
 
     @Override
     public Goods selectById(int id) {
-        return goodsMapper.selectById(id);
+
+        Goods goods=goodsMapper.selectById(id);
+        Transform.transform(goods.getListPrice());
+        return goods;
     }
 
     @Override
     public int addGoods(Goods goods) {
+        Transform.retransform(goods.getListPrice());
         if (goodsMapper.addGoods(goods) == 1) {
             int a = goods.getId();
             for(int x=0;x<goods.getListpicture().size();x++){
@@ -62,6 +71,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public int updateState(StateModel stateModel) {
+
         return goodsMapper.updateState(stateModel);
     }
 
@@ -78,7 +88,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int updateBatch(int smallTypeId, int smallModelId, int price) {
         Batch batch=new Batch();
-        batch.setPrice(price);
+        batch.setPrice(price*100);
         batch.setListId(priceModelMapper.selectBySmall(smallModelId));
         batch.setListGoodsId(goodsMapper.selectBySmall(smallTypeId));
 
@@ -88,7 +98,12 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int updateGoods(Goods goods) {
         int a=goods.getId();
+        List<GoodsPicture> listpicture = null;
+        Transform.retransform(goods.getListPrice());
         List<GoodsPrice> list=new ArrayList<>();
+
+        goodsPictureMapper.updateById(goods.getListpicture().get(0));
+
         for (int i = 0; i < goods.getListPrice().size(); i++) {
             if (goods.getListPrice().get(i).getGoodsId()==null) {
                 goods.getListPrice().get(i).setGoodsId(a);

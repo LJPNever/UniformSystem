@@ -13,11 +13,17 @@ public class FreeshippingServiceImpl implements FreeshippingService {
     private FreeshippingMapper freeshippingMapper;
     @Override
     public int setFree(Freeshipping freeshipping) {
+        freeshipping.setFree(freeshipping.getFree()*100);
+        freeshipping.setFreeConditions(freeshipping.getFreeConditions()*100);
         return freeshippingMapper.setFree(freeshipping);
     }
 
     @Override
     public Freeshipping getFree() {
-        return freeshippingMapper.getFree();
+
+       Freeshipping freeshipping =freeshippingMapper.getFree();
+       freeshipping.setFreeConditions(freeshipping.getFreeConditions()/100);
+       freeshipping.setFree(freeshipping.getFree()/100);
+        return freeshipping;
     }
 }

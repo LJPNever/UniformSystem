@@ -44,7 +44,7 @@
   </update>
 
 
-  <select id="selectById" resultType="Orderform" resultMap="Orderform">
+  <select id="selectById"  resultMap="Orderform">
     SELECT * FROM tb_orderform where id=#{id}
   </select>
   <resultMap id="Orderform" type="Orderform">

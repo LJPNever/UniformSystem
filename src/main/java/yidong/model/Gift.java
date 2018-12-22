@@ -2,7 +2,7 @@ package yidong.model;
 
 public class Gift {
     private int id;
-    private Integer fullCondition;
+    private Float fullCondition;
 
     private Integer gift;
 
@@ -26,13 +26,6 @@ public class Gift {
         this.num = num;
     }
 
-    public Integer getFullCondition() {
-        return fullCondition;
-    }
-
-    public void setFullCondition(Integer fullCondition) {
-        this.fullCondition = fullCondition;
-    }
 
     public String getGiftName() {
         return giftName;
@@ -48,5 +41,13 @@ public class Gift {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Float getFullCondition() {
+        return fullCondition;
+    }
+
+    public void setFullCondition(Float fullCondition) {
+        this.fullCondition = fullCondition;
     }
 }

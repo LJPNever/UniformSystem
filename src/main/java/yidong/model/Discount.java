@@ -3,9 +3,9 @@ package yidong.model;
 import java.util.Date;
 
 public class Discount {
-    private Integer discountCondition;
+    private Float discountCondition;
 
-    private Integer reduce;
+    private Float reduce;
 
     private Float discount;
 
@@ -13,13 +13,6 @@ public class Discount {
 
     private String end;
 
-    public Integer getReduce() {
-        return reduce;
-    }
-
-    public void setReduce(Integer reduce) {
-        this.reduce = reduce;
-    }
 
     public Float getDiscount() {
         return discount;
@@ -30,13 +23,6 @@ public class Discount {
     }
 
 
-    public Integer getDiscountCondition() {
-        return discountCondition;
-    }
-
-    public void setDiscountCondition(Integer discountCondition) {
-        this.discountCondition = discountCondition;
-    }
 
     public String getStart() {
         return start;
@@ -52,5 +38,21 @@ public class Discount {
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public Float getDiscountCondition() {
+        return discountCondition;
+    }
+
+    public void setDiscountCondition(Float discountCondition) {
+        this.discountCondition = discountCondition;
+    }
+
+    public Float getReduce() {
+        return reduce;
+    }
+
+    public void setReduce(Float reduce) {
+        this.reduce = reduce;
     }
 }

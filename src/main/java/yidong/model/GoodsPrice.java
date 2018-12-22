@@ -21,21 +21,7 @@ public class GoodsPrice {
         this.goodsId = goodsId;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Integer getTradePrice() {
-        return tradePrice;
-    }
-
-    public void setTradePrice(Integer tradePrice) {
-        this.tradePrice = tradePrice;
-    }
 
     public Integer getNum() {
         return num;
@@ -55,9 +41,9 @@ public class GoodsPrice {
 
     private Integer goodsId;
 
-    private Integer price;
+    private float price;
 
-    private Integer tradePrice;
+    private float tradePrice;
 
     private Integer num;
     private String code;
@@ -86,5 +72,21 @@ public class GoodsPrice {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public void setTradePrice(float tradePrice) {
+        this.tradePrice = tradePrice;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public float getTradePrice() {
+        return tradePrice;
     }
 }
