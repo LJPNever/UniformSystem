@@ -2,6 +2,7 @@ package yidong.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import yidong.Util.Transform;
 import yidong.mapper.OrderformGoodsMapper;
 import yidong.mapper.OrderformMapper;
 import yidong.model.Modle;
@@ -20,7 +21,14 @@ public class OrderFormServiceImpl implements OrderFormService {
 
     @Override
     public List<Orderform> select(Map map) {
-        return orderformMapper.select(map);
+        List<Orderform> list=orderformMapper.select(map);
+        for (int i=0;i<list.size();i++){
+            Transform.transformOrderform(list.get(i).getList());
+            list.get(i).setSumfinal(list.get(i).getSumfinal()/100);
+            list.get(i).setSumFirst(list.get(i).getSumFirst()/100);
+        }
+
+        return list;
     }
 
     @Override
@@ -45,7 +53,12 @@ public class OrderFormServiceImpl implements OrderFormService {
 
     @Override
     public Orderform selectById(String id) {
-        return orderformMapper.selectById(id);
+
+        Orderform orderform=orderformMapper.selectById(id);
+        Transform.transformOrderform(orderform.getList());
+        orderform.setSumFirst(orderform.getSumFirst()/100);
+        orderform.setSumfinal(orderform.getSumfinal()/100);
+        return orderform;
     }
 
     @Override

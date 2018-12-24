@@ -2,6 +2,7 @@ package yidong.Util;
 
 import yidong.model.Gift;
 import yidong.model.GoodsPrice;
+import yidong.model.OrderformGoods;
 
 import java.util.List;
 
@@ -31,5 +32,11 @@ public class Transform {
     }
     public static void retransformGitf(Gift gift){
         gift.setFullCondition(gift.getFullCondition()/100);
+    }
+
+    public static void transformOrderform(List<OrderformGoods> list){
+        for (int i=0;i<list.size();i++){
+            list.get(i).setGoodsPrice(list.get(i).getGoodsPrice()/100);
+        }
     }
 }
