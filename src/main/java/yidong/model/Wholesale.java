@@ -11,7 +11,7 @@ public class Wholesale {
 
     private Date time;
 
-    private int sum;
+    private float sum;
     private String schoolName;
 
     public Integer getGoodsid() {
@@ -46,13 +46,8 @@ public class Wholesale {
         this.time = time;
     }
 
-    public int getSum() {
-        return sum;
-    }
 
-    public void setSum(int sum) {
-        this.sum = sum;
-    }
+
 
     public String getSchoolName() {
         return schoolName;
@@ -60,5 +55,13 @@ public class Wholesale {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+    public float getSum() {
+        return sum;
+    }
+
+    public void setSum(float sum) {
+        this.sum = sum;
     }
 }

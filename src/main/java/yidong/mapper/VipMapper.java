@@ -13,4 +13,5 @@ public interface VipMapper {
     int selectCount(Map map);
     int deleteById(String openId);
     Vip check(String openId);
+    Vip checkSchool(String schoolName);
 }

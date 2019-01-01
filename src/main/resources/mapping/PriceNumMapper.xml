@@ -7,13 +7,15 @@
 
 
   <insert id="addnum">
-    INSERT INTO tb_price_num(priceId,num)VALUES
-    <foreach collection="list" item="item" index="index" separator="," >
-      (
-      #{item.id,jdbcType=INTEGER},#{item.num,jdbcType=INTEGER}
+    INSERT INTO tb_price_num(priceId,num) VALUES
 
+    <foreach collection="list" item="item" index="index" separator="," >
+    (
+      #{item.id,jdbcType=INTEGER},#{item.num,jdbcType=INTEGER}
       )
+
     </foreach>
+
   </insert>
 
 

@@ -15,7 +15,7 @@
   </select>
 
   <select id="getWeek" resultType="String">
-    select sum(sum) from tb_retail where YEARWEEK(DATE_FORMAT(time,'%Y-%m-%d'))=YEARWEEK(#{time})
+    select sum(sum) from tb_retail WHERE YEARWEEK(DATE_FORMAT(time,'%Y-%m-%d'))=YEARWEEK(#{time})
   </select>
 
   <select id="getMonth" resultType="String">
@@ -24,17 +24,21 @@
 
   <select id="selectRetail" resultType="Retail">
     SELECT * FROM tb_retail
-     <where>
+       where
        time BETWEEN DATE_FORMAT(#{start},'%Y-%m-%d') AND DATE_FORMAT(#{end},'%Y-%m-%d')
       <if test="schoolName!=null">
       AND schoolName=#{schoolName}
      </if>
-    </where>
+   ORDER by time DESC
    limit #{begin},#{over}
   </select>
 
   <select id="selectCount" resultType="int">
     SELECT COUNT(*) FROM tb_retail where time BETWEEN DATE_FORMAT(#{start},'%Y-%m-%d') AND DATE_FORMAT(#{end},'%Y-%m-%d')
+
+      <if test="schoolName!=null">
+        AND schoolName=#{schoolName}
+      </if>
 
   </select>
 </mapper>

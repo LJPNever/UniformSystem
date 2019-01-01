@@ -18,6 +18,8 @@ public class Goods {
 
     private Integer batch;
 
+
+
     private int  smallTypeId;
     private String smallTypeName;
     private int recommend;

@@ -18,7 +18,10 @@ public class VipServiceImpl implements VipService {
     public int setVip(Vip vip) {
 
         if(vipMapper.check(vip.getOpenId())!=null){
-            return 0;
+            return 2;
+        }
+        if(vipMapper.checkSchool(vip.getSchoolName())!=null){
+            return 3;
         }
 
         return vipMapper.setVip(vip);

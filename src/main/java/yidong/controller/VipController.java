@@ -28,13 +28,22 @@ public class VipController {
     public ResponseEntity<Map> setVip(@RequestBody Vip vip){
 
         Map map=new HashMap();
-        if(vipService.setVip(vip)!=0) {
+        int a=vipService.setVip(vip);
+        if(a==1) {
             map.put("status", 1);
             map.put("data", "添加成功");
             return new ResponseEntity<Map>(map, HttpStatus.OK);
+        }else if(a==2){
+            map.put("status",0);
+            map.put("data", "该用户已为VIP，请勿重复设置");
+            return new ResponseEntity<Map>(map, HttpStatus.OK);
+        }else if(a==3){
+            map.put("status",0);
+            map.put("data", "该学校已有VIP，请勿重复设置");
+            return new ResponseEntity<Map>(map, HttpStatus.OK);
         }else {
             map.put("status",0);
-            map.put("data", "添加失败");
+            map.put("data", "系统出错，数据插入失败");
             return new ResponseEntity<Map>(map, HttpStatus.OK);
         }
 

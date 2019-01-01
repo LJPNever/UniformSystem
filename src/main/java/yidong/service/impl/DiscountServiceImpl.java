@@ -12,7 +12,7 @@ public class DiscountServiceImpl implements DiscountService {
     @Override
     public Discount getDiscount() {
         Discount discount=discountMapper.getDiscount();
-        discount.setDiscount(discount.getDiscount()/10);
+
         discount.setDiscountCondition(discount.getDiscountCondition()/100);
         discount.setReduce(discount.getReduce()/100);
         return discount;
@@ -20,7 +20,7 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public int updateDiscount(Discount discount) {
-        discount.setDiscount(discount.getDiscount()*10);
+
         discount.setDiscountCondition(discount.getDiscountCondition()*100);
         discount.setReduce(discount.getReduce()*100);
 

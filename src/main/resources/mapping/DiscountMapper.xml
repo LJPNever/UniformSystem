@@ -5,6 +5,6 @@
     SELECT * FROM tb_discount
   </select>
   <update id="updateDiscount" parameterType="Discount">
-    UPDATE tb_discount SET discountCondition=#{discountCondition},reduce=#{reduce},discount=#{discount},start=#{start},end=#{end}
+    UPDATE tb_discount SET discountCondition=#{discountCondition},reduce=#{reduce},discount=#{discount},start=#{start},end=#{end} where id=1
   </update>
 </mapper>

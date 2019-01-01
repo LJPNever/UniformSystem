@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yidong.mapper.WholesaleMapper" >
   <select id="getDay" resultType="String">
-    select sum(sum) from tb_wholesale where DATE_FORMAT(time,'%Y-%m-%d')= DATE_FORMAT(#{time},'%Y-%m-%d')
+    select sum(sum) from tb_wholesale where   DATE_FORMAT(time,'%Y-%m-%d')= DATE_FORMAT(#{time},'%Y-%m-%d')
   </select>
 
   <select id="getWeek" resultType="String">
@@ -13,19 +13,24 @@
     select sum(sum) from tb_wholesale where  DATE_FORMAT(time,'%Y-%m')= DATE_FORMAT(#{time},'%Y-%m')
   </select>
 
-  <select id="selectWholesale" resultType="Retail">
+  <select id="selectWholesale" resultType="Wholesale">
     SELECT * FROM tb_wholesale
-    <where>
-      time BETWEEN #{start} AND #{end}
+    where
+    time BETWEEN DATE_FORMAT(#{start},'%Y-%m-%d') AND DATE_FORMAT(#{end},'%Y-%m-%d')
       <if test="schoolName!=null">
         AND schoolName=#{schoolName}
       </if>
-    </where>
+     ORDER BY TIME DESC
     limit #{begin},#{over}
   </select>
 
   <select id="selectCount" resultType="int">
-    SELECT COUNT(*) FROM tb_wholesale where time BETWEEN #{start} AND #{end}
+    SELECT COUNT(*) FROM tb_wholesale
+    where time BETWEEN DATE_FORMAT(#{start},'%Y-%m-%d') AND DATE_FORMAT(#{end},'%Y-%m-%d')
+
+      <if test="schoolName!=null">
+        AND schoolName=#{schoolName}
+      </if>
 
   </select>
 </mapper>

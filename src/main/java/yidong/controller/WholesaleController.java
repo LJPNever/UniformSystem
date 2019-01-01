@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import yidong.Util.IsEmpty;
 import yidong.model.Wholesale;
 import yidong.service.RetailService;
 import yidong.service.WholesaleService;
@@ -86,7 +87,7 @@ public class WholesaleController {
         Map map1=new HashMap();
         map.put("start",start);
         map.put("end",end);
-        map.put("schoolName",schoolName);
+        map.put("schoolName", IsEmpty.isEmpty(schoolName));
         map.put("begin",(page-1)*limit);
         map.put("over",limit);
         map1.put("status",1);

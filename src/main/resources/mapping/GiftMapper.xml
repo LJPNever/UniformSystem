@@ -3,6 +3,7 @@
 <mapper namespace="yidong.mapper.GiftMapper" >
   <select id="getGift" resultType="Gift" resultMap="gift">
     SELECT * FROM tb_gift
+    ORDER BY fullCondition ASC
   </select>
   <resultMap id="gift" type="Gift">
     <id column="gift" property="gift"></id>

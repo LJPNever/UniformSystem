@@ -14,21 +14,6 @@ public class Orderform {
         this.id = id;
     }
 
-    public Integer getSumFirst() {
-        return sumFirst;
-    }
-
-    public void setSumFirst(Integer sumFirst) {
-        this.sumFirst = sumFirst;
-    }
-
-    public Integer getSumfinal() {
-        return sumfinal;
-    }
-
-    public void setSumfinal(Integer sumfinal) {
-        this.sumfinal = sumfinal;
-    }
 
     public Integer getTransportFee() {
         return transportFee;
@@ -119,9 +104,9 @@ public class Orderform {
         this.createTime = createTime;
     }
 
-    private Integer sumFirst;
+    private float sumFirst;
 
-    private Integer sumfinal;
+    private float sumfinal;
 
     private Integer transportFee;
 
@@ -152,7 +137,9 @@ public class Orderform {
     private List<OrderformGoods> list;
     private int isVip;
     private String schoolName;
-
+    private String province;
+    private String city;
+    private String district;
 
     public List<OrderformGoods> getList() {
         return list;
@@ -193,5 +180,45 @@ public class Orderform {
 
     public void setIsVip(int isVip) {
         this.isVip = isVip;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public float getSumFirst() {
+        return sumFirst;
+    }
+
+    public void setSumFirst(float sumFirst) {
+        this.sumFirst = sumFirst;
+    }
+
+    public float getSumfinal() {
+        return sumfinal;
+    }
+
+    public void setSumfinal(float sumfinal) {
+        this.sumfinal = sumfinal;
     }
 }

@@ -36,4 +36,8 @@
   <select id="check" resultType="yidong.model.Vip">
     SELECT * FROM tb_vip where openId=#{openId}
   </select>
+
+  <select id="checkSchool" resultType="yidong.model.Vip">
+     SELECT * FROM tb_vip where schoolName=#{schoolName}
+  </select>
 </mapper>

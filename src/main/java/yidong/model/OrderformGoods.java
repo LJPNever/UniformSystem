@@ -11,7 +11,7 @@ public class OrderformGoods {
 
     private String goodsName;
 
-    private Integer goodsPrice;
+    private float goodsPrice;
     private String goodsPicture;
     private Integer buyNum;
     private String code;
@@ -42,13 +42,6 @@ public class OrderformGoods {
         this.goodsName = goodsName;
     }
 
-    public Integer getGoodsPrice() {
-        return goodsPrice;
-    }
-
-    public void setGoodsPrice(Integer goodsPrice) {
-        this.goodsPrice = goodsPrice;
-    }
 
     public Integer getBuyNum() {
         return buyNum;
@@ -109,4 +102,11 @@ public class OrderformGoods {
     }
 
 
+    public float getGoodsPrice() {
+        return goodsPrice;
+    }
+
+    public void setGoodsPrice(float goodsPrice) {
+        this.goodsPrice = goodsPrice;
+    }
 }

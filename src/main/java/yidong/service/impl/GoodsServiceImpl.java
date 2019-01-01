@@ -60,9 +60,9 @@ public class GoodsServiceImpl implements GoodsService {
 
                    priceModelMapper.addModle(goods.getListPrice().get(i).getListModle());
                 }
-               priceNumMapper.addnum(goods.getListPrice());
-            }
 
+            }
+            priceNumMapper.addnum(goods.getListPrice());
             return 1;
 
         }
@@ -116,13 +116,14 @@ public class GoodsServiceImpl implements GoodsService {
                     list.add(goods.getListPrice().get(i));
                 }
 
-
-                priceNumMapper.addnum(list);
             }
-
+        }
+        if(list.size()!=0){
+        priceNumMapper.addnum(list);
         }
 
-        return  goodsMapper.updateById(goods)+goodsPriceMapper.updateGoodsPrice(goods.getListPrice())+priceNumMapper.updateGoodsPrice(goods.getListPrice());
+        goodsMapper.updateById(goods);
+        return  1;
 
     }
 

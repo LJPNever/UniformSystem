@@ -15,24 +15,28 @@ public class RetailServiceImpl implements RetailService{
     @Autowired
     private RetailMapper retailMapper;
     @Override
-    public int getDay(String time) {
+    public Float getDay(String time) {
 
         return Check.check(retailMapper.getDay(time));
     }
 
     @Override
-    public int getWeek(String time) {
+    public Float getWeek(String time) {
         return Check.check(retailMapper.getWeek(time));
     }
 
     @Override
-    public int getMonth(String time) {
+    public Float getMonth(String time) {
         return Check.check(retailMapper.getMonth(time));
     }
 
     @Override
     public List<Retail> selectRetail(Map map) {
-        return retailMapper.selectRetail(map);
+        List<Retail> list=retailMapper.selectRetail(map);
+        for(int i=0;i<list.size();i++){
+            list.get(i).setSum(list.get(i).getSum()/100);
+        }
+        return list;
     }
 
     @Override

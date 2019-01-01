@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface WholesaleService {
-    int getDay(String time);
-    int getWeek(String time);
-    int getMonth(String time);
+    Float getDay(String time);
+    Float getWeek(String time);
+    Float getMonth(String time);
     List<Wholesale> selectWholesale(Map map);
     int selectCount(Map map);
 }

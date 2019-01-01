@@ -16,23 +16,27 @@ public class WholesaleServiceImpl implements WholesaleService{
     private WholesaleMapper wholesaleMapper;
 
     @Override
-    public int getDay(String time) {
+    public Float getDay(String time) {
         return Check.check(wholesaleMapper.getDay(time));
     }
 
     @Override
-    public int getWeek(String time) {
+    public Float getWeek(String time) {
         return Check.check(wholesaleMapper.getWeek(time));
     }
 
     @Override
-    public int getMonth(String time) {
+    public Float getMonth(String time) {
         return Check.check(wholesaleMapper.getMonth(time));
     }
 
     @Override
     public List<Wholesale> selectWholesale(Map map) {
-        return wholesaleMapper.selectWholesale(map);
+        List<Wholesale> list=wholesaleMapper.selectWholesale(map);
+        for(int i=0;i<list.size();i++){
+            list.get(i).setSum(list.get(i).getSum()/100);
+        }
+        return list;
     }
 
     @Override
