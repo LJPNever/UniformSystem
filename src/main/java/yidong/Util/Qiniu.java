@@ -24,8 +24,8 @@ public class Qiniu {
 
         //七牛云对应的信息
 
-         ConstantQiniu constantQiniu=new ConstantQiniu("TmBtWIgQaaCypf-rq8p9DwCHV5OdJYgprYepcJ5i","9X_WLkjleJd_edYfgZmT0uA-TOnLOsuWLuWZndz4",
-                 "dongpinhui","dongpinhui.xyz");
+         ConstantQiniu constantQiniu=new ConstantQiniu("dNr3E0ghsa4aHoy6TZV28Ci01iUXjiHEbWC1JMm6","biFGCjTGFp8EH0-LmuQEZ1RT656boPlWn51OCYOA",
+                 "shashafushi","shashafushi.cn");
         // 构造一个带指定Zone对象的配置类
         Configuration cfg = new Configuration(Zone.zone2());
         // 其他参数参考类注释
